@@ -2,7 +2,6 @@ package com.mucahitarslan.hrms.controller;
 
 import com.mucahitarslan.hrms.dto.request.EmployerRequest;
 import com.mucahitarslan.hrms.dto.response.EmployerResponse;
-import com.mucahitarslan.hrms.dto.response.RecordEmployerResponse;
 import com.mucahitarslan.hrms.service.abstracts.IEmployerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,7 @@ public class EmployerController {
     }
 
     @GetMapping()
-    public List<RecordEmployerResponse> getAll(){
+    public List<EmployerResponse> getAll(){
         return employerService.findAll();
     }
 

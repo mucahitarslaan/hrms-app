@@ -1,6 +1,7 @@
 package com.mucahitarslan.hrms.runner;
 
-import com.mucahitarslan.hrms.dto.response.RecordEmployerResponse;
+import com.mucahitarslan.hrms.dto.response.EmployerResponse;
+import mernis.CSDKPSPublicSoap;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -12,19 +13,22 @@ public class Runner implements ApplicationRunner {
 
         deneme();
     }
-    RecordEmployerResponse recordEmployerResponse=
-            new RecordEmployerResponse("mucahitas","www.ss.com"
+    EmployerResponse employerResponse =
+            new EmployerResponse("mucahitas","www.ss.com"
                     ,"+90567767767767","jsjs@mucahit.com");
     private String name = "ali";
     private String tempStr = "mucahitas";
-    public void deneme(){
+    public void deneme() throws Exception {
         tempStr = tempStr.replace("a","i");
-        recordEmployerResponse.companyName().replace("a","i");
-        String changeStr = recordEmployerResponse.companyName().replace("a","i");
+        employerResponse.companyName().replace("a","i");
+        String changeStr = employerResponse.companyName().replace("a","i");
 
         System.out.println(changeStr);
-        System.out.println(recordEmployerResponse.companyName());
+        System.out.println(employerResponse.companyName());
         System.out.println(tempStr);
 
+        CSDKPSPublicSoap publicSoap = new CSDKPSPublicSoap();
+        var isReal = publicSoap.TCKimlikNoDogrula(Long.valueOf("111111111"),"MÜCAHİT","ARSLAN",1995);
+        System.out.println(isReal);
     }
 }
