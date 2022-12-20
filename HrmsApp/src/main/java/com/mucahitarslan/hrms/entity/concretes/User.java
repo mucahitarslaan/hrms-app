@@ -6,16 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "users")
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Valid
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Email
     private String mail;
     private String password;
 

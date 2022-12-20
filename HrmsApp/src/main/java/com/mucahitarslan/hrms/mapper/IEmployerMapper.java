@@ -1,5 +1,6 @@
 package com.mucahitarslan.hrms.mapper;
 
+import com.mucahitarslan.hrms.core.utilities.results.DataResult;
 import com.mucahitarslan.hrms.dto.request.EmployerRequest;
 import com.mucahitarslan.hrms.dto.response.EmployerResponse;
 import com.mucahitarslan.hrms.entity.concretes.Employer;

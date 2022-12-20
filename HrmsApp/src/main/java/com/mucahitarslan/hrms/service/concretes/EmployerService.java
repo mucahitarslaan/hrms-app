@@ -1,5 +1,7 @@
 package com.mucahitarslan.hrms.service.concretes;
 
+import com.mucahitarslan.hrms.core.utilities.results.DataResult;
+import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IEmployerRepository;
 import com.mucahitarslan.hrms.dto.request.EmployerRequest;
 import com.mucahitarslan.hrms.dto.response.EmployerResponse;
@@ -8,6 +10,7 @@ import com.mucahitarslan.hrms.service.abstracts.IEmployerService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service()
 public class EmployerService implements IEmployerService {
@@ -20,16 +23,16 @@ public class EmployerService implements IEmployerService {
     }
 
     @Override
-    public List<EmployerResponse> findAll() {
-        return employerRepository.findAll()
+    public DataResult<List<EmployerResponse>> findAll() {
+        return new SuccessDataResult<>(employerRepository.findAll()
                 .stream()
                 .map(employerMapper::toEmployerResponse)
-                .toList();
+                .collect(Collectors.toList()),"All employers are listed");
     }
 
     @Override
-    public EmployerResponse save(EmployerRequest employerRequest) {
+    public DataResult<EmployerResponse> save(EmployerRequest employerRequest) {
         var employer = employerMapper.toEmployer(employerRequest);
-        return employerMapper.toEmployerResponse(employerRepository.save(employer));
+        return new SuccessDataResult<>(employerMapper.toEmployerResponse(employerRepository.save(employer)),"Employer is added");
     }
 }

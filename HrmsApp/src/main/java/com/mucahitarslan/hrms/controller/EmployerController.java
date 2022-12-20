@@ -1,5 +1,6 @@
 package com.mucahitarslan.hrms.controller;
 
+import com.mucahitarslan.hrms.core.utilities.results.DataResult;
 import com.mucahitarslan.hrms.dto.request.EmployerRequest;
 import com.mucahitarslan.hrms.dto.response.EmployerResponse;
 import com.mucahitarslan.hrms.service.abstracts.IEmployerService;
@@ -19,12 +20,12 @@ public class EmployerController {
     }
 
     @GetMapping()
-    public List<EmployerResponse> getAll(){
+    public DataResult<List<EmployerResponse>> getAll(){
         return employerService.findAll();
     }
 
     @PostMapping()
-    public EmployerResponse add(@RequestBody EmployerRequest employerRequest){
+    public DataResult<EmployerResponse> add(@RequestBody EmployerRequest employerRequest){
         return employerService.save(employerRequest);
     }
 }

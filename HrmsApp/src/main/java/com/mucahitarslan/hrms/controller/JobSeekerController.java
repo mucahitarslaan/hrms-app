@@ -1,5 +1,7 @@
 package com.mucahitarslan.hrms.controller;
 
+import com.mucahitarslan.hrms.core.utilities.results.DataResult;
+import com.mucahitarslan.hrms.dto.request.JobSeekerRequest;
 import com.mucahitarslan.hrms.dto.response.JobSeekerResponse;
 import com.mucahitarslan.hrms.entity.concretes.JobSeeker;
 import com.mucahitarslan.hrms.service.abstracts.IJobSeekerService;
@@ -18,12 +20,12 @@ public class JobSeekerController {
     }
 
     @GetMapping()
-    public List<JobSeekerResponse> getAll(){
+    public DataResult<List<JobSeekerResponse>> getAll(){
         return jobSeekerService.findAll();
     }
 
     @PostMapping()
-    public void add(@RequestBody JobSeeker jobSeeker){
-        jobSeekerService.save(jobSeeker);
+    public DataResult<JobSeekerResponse> add(@RequestBody JobSeekerRequest jobSeekerRequest){
+        return jobSeekerService.save(jobSeekerRequest);
     }
 }
