@@ -21,6 +21,7 @@ public abstract class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Email
+    @Column(unique = true)
     private String mail;
     private String password;
 

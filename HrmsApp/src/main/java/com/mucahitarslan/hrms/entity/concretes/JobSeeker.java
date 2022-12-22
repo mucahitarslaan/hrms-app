@@ -1,6 +1,7 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class JobSeeker extends User {
 
     @NotNull
     @Size(min = 11, max = 11)
+    @Column(unique = true)
     private String identityId;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthDate;

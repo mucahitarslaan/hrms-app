@@ -12,6 +12,4 @@ public interface IEmployerMapper {
     EmployerResponse toEmployerResponse(Employer employer);
 
     Employer toEmployer(EmployerRequest employerRequest);
-
-
 }

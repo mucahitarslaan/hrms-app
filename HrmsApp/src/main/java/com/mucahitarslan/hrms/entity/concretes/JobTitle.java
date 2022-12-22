@@ -15,9 +15,9 @@ public class JobTitle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(name = "title_id",nullable = false)
+    @Column(nullable = false)
     private long id;
 
-    @Column(name = "title_name",nullable = false)
-    private String titleName;
+    @Column(nullable = false)
+    private String name;
 }

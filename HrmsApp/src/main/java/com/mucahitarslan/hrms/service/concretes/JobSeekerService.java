@@ -38,12 +38,12 @@ public class JobSeekerService implements IJobSeekerService {
 
     @Override
     public DataResult<JobSeekerResponse> save(JobSeekerRequest jobSeekerRequest) {
-        if (jobSeekerRepository.existsByMail(jobSeekerRequest.mail())){
-            return new ErrorDataResult<>("the identity id has been used before");
-        }
-        if (jobSeekerRepository.existsByIdentityId(jobSeekerRequest.identityId())){
+       /* if (jobSeekerRepository.existsByMail(jobSeekerRequest.mail())){
             return new ErrorDataResult<>("the mail has been used before");
         }
+        if (jobSeekerRepository.existsByIdentityId(jobSeekerRequest.identityId())){
+            return new ErrorDataResult<>("the identity id has been used before");
+        }*/
         if (validatePersonService.validate(jobSeekerRequest)){
             var jobSeeker = jobSeekerMapper.toJobSeeker(jobSeekerRequest);
             return new SuccessDataResult<>(jobSeekerMapper.toJobSeekerResponse(jobSeekerRepository.save(jobSeeker)),"Job seeker is added");
