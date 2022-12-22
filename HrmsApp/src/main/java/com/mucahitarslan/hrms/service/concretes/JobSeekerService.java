@@ -9,6 +9,7 @@ import com.mucahitarslan.hrms.dto.request.JobSeekerRequest;
 import com.mucahitarslan.hrms.dto.response.JobSeekerResponse;
 import com.mucahitarslan.hrms.mapper.IJobSeekerMapper;
 import com.mucahitarslan.hrms.service.abstracts.IJobSeekerService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,8 @@ public class JobSeekerService implements IJobSeekerService {
     private final IJobSeekerMapper jobSeekerMapper;
     private final IValidatePersonService validatePersonService;
 
-    public JobSeekerService(IJobSeekerRepository jobSeekerRepository, IJobSeekerMapper jobSeekerMapper, IValidatePersonService validatePersonService) {
+    public JobSeekerService(IJobSeekerRepository jobSeekerRepository, IJobSeekerMapper jobSeekerMapper,
+                            @Qualifier("validatePersonService") IValidatePersonService validatePersonService) {
         this.jobSeekerRepository = jobSeekerRepository;
         this.jobSeekerMapper = jobSeekerMapper;
         this.validatePersonService = validatePersonService;
@@ -36,6 +38,12 @@ public class JobSeekerService implements IJobSeekerService {
 
     @Override
     public DataResult<JobSeekerResponse> save(JobSeekerRequest jobSeekerRequest) {
+        if (jobSeekerRepository.existsByMail(jobSeekerRequest.mail())){
+            return new ErrorDataResult<>("the identity id has been used before");
+        }
+        if (jobSeekerRepository.existsByIdentityId(jobSeekerRequest.identityId())){
+            return new ErrorDataResult<>("the mail has been used before");
+        }
         if (validatePersonService.validate(jobSeekerRequest)){
             var jobSeeker = jobSeekerMapper.toJobSeeker(jobSeekerRequest);
             return new SuccessDataResult<>(jobSeekerMapper.toJobSeekerResponse(jobSeekerRepository.save(jobSeeker)),"Job seeker is added");

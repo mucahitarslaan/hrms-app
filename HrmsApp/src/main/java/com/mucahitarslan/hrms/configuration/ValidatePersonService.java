@@ -4,7 +4,7 @@ import com.mucahitarslan.hrms.dto.request.JobSeekerRequest;
 import mernis.CSDKPSPublicSoap;
 import org.springframework.stereotype.Service;
 
-@Service("mernis")
+@Service("validatePersonService")
 public class ValidatePersonService implements IValidatePersonService{
 
     private final CSDKPSPublicSoap publicSoap = new CSDKPSPublicSoap();
