@@ -1,6 +1,7 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -17,7 +18,8 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Candidate extends User{
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Staff extends User{
 
     @NotNull
     @NotBlank

@@ -1,51 +1,37 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "employers")
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Valid
+@Data
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Employer extends User {
+
     @NotNull
+    @NotBlank
     private String companyName;
+
     @NotNull
+    @NotBlank
     private String webSite;
+
     @NotNull
-    @Pattern(regexp = "^+(\\d{2})\\s((\\d{3}))\\s(\\d{3})\\s(\\d{2})\\s(\\d{2})")
-    private String phone;
+    @NotBlank
+    private String phoneNumber;
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getWebSite() {
-        return webSite;
-    }
-
-    public void setWebSite(String webSite) {
-        this.webSite = webSite;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }

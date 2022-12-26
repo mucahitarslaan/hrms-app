@@ -1,6 +1,7 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -12,12 +13,12 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "job_seekers")
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Data
-public class JobSeeker extends User {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Candidate extends User {
 
     @NotNull
     @NotBlank

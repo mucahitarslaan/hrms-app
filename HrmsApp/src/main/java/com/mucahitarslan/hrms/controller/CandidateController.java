@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/jobseekers")
-public class JobSeekerController {
+public class CandidateController {
     private final IJobSeekerService jobSeekerService;
 
 
-    public JobSeekerController(IJobSeekerService jobSeekerService) {
+    public CandidateController(IJobSeekerService jobSeekerService) {
         this.jobSeekerService = jobSeekerService;
     }
 

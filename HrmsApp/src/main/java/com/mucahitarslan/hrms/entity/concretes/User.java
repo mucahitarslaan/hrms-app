@@ -1,52 +1,36 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "users")
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Valid
+@Data
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public abstract class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Email
+
+    @Email(message = "please check your email")
+    @NotNull(message = "email can not be empty")
+    @NotBlank(message = "email can not be empty")
     @Column(unique = true)
-    private String mail;
+    private String email;
+
+    @NotNull(message = "password can not be empty")
+    @NotBlank(message = "password can not be empty")
     private String password;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
 }

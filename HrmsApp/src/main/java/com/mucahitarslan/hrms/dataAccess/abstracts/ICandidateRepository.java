@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IJobSeekerRepository extends JpaRepository<Candidate,Long> {
-    boolean existsByMail(String mail);
-    boolean existsByIdentityId(String identityId);
+public interface ICandidateRepository extends JpaRepository<Candidate,Long> {
+    boolean existsByEmail(String email);
+    boolean existsByIdentityNumber(String identityId);
 
 }

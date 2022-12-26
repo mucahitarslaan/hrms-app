@@ -4,7 +4,7 @@ public record EmployerRequest (
         String companyName,
         String webSite,
         String phone,
-        String mail,
+        String email,
         String password,
         String rePassword
 ){

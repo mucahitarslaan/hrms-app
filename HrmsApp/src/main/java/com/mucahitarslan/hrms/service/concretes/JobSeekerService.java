@@ -4,7 +4,7 @@ import com.mucahitarslan.hrms.configuration.IValidatePersonService;
 import com.mucahitarslan.hrms.core.utilities.results.DataResult;
 import com.mucahitarslan.hrms.core.utilities.results.ErrorDataResult;
 import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
-import com.mucahitarslan.hrms.dataAccess.abstracts.IJobSeekerRepository;
+import com.mucahitarslan.hrms.dataAccess.abstracts.ICandidateRepository;
 import com.mucahitarslan.hrms.dto.request.JobSeekerRequest;
 import com.mucahitarslan.hrms.dto.response.JobSeekerResponse;
 import com.mucahitarslan.hrms.mapper.IJobSeekerMapper;
@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class JobSeekerService implements IJobSeekerService {
-    private final IJobSeekerRepository jobSeekerRepository;
+    private final ICandidateRepository jobSeekerRepository;
     private final IJobSeekerMapper jobSeekerMapper;
     private final IValidatePersonService validatePersonService;
 
-    public JobSeekerService(IJobSeekerRepository jobSeekerRepository, IJobSeekerMapper jobSeekerMapper,
+    public JobSeekerService(ICandidateRepository jobSeekerRepository, IJobSeekerMapper jobSeekerMapper,
                             @Qualifier("validatePersonService") IValidatePersonService validatePersonService) {
         this.jobSeekerRepository = jobSeekerRepository;
         this.jobSeekerMapper = jobSeekerMapper;
