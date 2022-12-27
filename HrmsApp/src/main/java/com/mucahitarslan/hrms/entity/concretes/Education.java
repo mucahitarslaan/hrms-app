@@ -32,6 +32,6 @@ public class Education {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate graduationDate;
 
-    @ManyToOne
-    private Resume resume;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Candidate candidate;
 }

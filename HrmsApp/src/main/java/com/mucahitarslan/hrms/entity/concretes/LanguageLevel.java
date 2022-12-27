@@ -25,6 +25,6 @@ public class LanguageLevel {
     @Size(min = 0, max = 5,message = "please enter number between 0 and 5")
     private int level;
 
-    @OneToOne(mappedBy = "languageLevel")
+    @OneToOne(mappedBy = "languageLevel",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Language language;
 }

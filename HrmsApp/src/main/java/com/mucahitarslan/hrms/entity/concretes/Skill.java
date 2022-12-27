@@ -19,5 +19,5 @@ public class Skill {
     private String skill;
 
     @ManyToOne
-    private Resume resume;
+    private Candidate candidate;
 }

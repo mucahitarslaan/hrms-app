@@ -28,6 +28,6 @@ public class UserActivation {
     @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
     private LocalDateTime dateOfActivedInfo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 }

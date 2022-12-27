@@ -1,23 +1,18 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@NoArgsConstructor
-@AllArgsConstructor
-@Valid
 @Data
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@Table(name = "users")
+//@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +27,12 @@ public abstract class User {
     @NotNull(message = "password can not be empty")
     @NotBlank(message = "password can not be empty")
     private String password;
+
+    @NotNull(message = "address can not be empty")
+    @NotBlank(message = "address can not be empty")
+    private String address;
+
+    @OneToMany(mappedBy = "user") // TODO:
+    private List<Link> links;
 
 }

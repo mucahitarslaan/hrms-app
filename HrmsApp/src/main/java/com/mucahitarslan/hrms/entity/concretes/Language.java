@@ -19,7 +19,7 @@ public class Language {
     private String name;
 
     @ManyToOne
-    private Resume resume;
+    private Candidate candidate;
 
     @OneToOne
     private LanguageLevel languageLevel;

@@ -28,5 +28,5 @@ public class Experience {
     private LocalDate terminationDate;
 
     @ManyToOne
-    private Resume resume;
+    private Candidate candidate;
 }

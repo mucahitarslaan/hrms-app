@@ -27,6 +27,6 @@ public class CoverLetter {
     @NotBlank
     private String letter;
 
-    @OneToOne(mappedBy = "coverLetter")
+    @OneToOne(mappedBy = "coverLetter",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Resume resume;
 }

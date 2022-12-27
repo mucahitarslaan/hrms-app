@@ -6,22 +6,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
-@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class Link {
+public class NameOfLinks extends Link{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
+    private String name;
 
-    private String url;
-
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private NameOfLinks nameOfLinks;
+    @OneToMany(mappedBy = "nameOfLinks",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Link> links;
 }
