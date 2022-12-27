@@ -3,21 +3,23 @@ package com.mucahitarslan.hrms.entity.concretes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Data
+@Table
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class JobTitle {
-
+public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private long id;
 
-    @Column(nullable = false)
-    private String jobTitle;
+    @OneToOne
+    private CoverLetter coverLetter;
+
+    @ManyToOne
+    private Candidate candidate;
 }

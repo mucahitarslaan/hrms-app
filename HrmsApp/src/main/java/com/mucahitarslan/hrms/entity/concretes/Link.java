@@ -8,16 +8,20 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class JobTitle {
-
+public class Link {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private long id;
 
-    @Column(nullable = false)
-    private String jobTitle;
+    private String url;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private NameOfLinks nameOfLinks;
 }

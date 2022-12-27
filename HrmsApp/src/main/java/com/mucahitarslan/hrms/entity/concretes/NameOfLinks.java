@@ -6,18 +6,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class JobTitle {
-
+public class NameOfLinks extends Link{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private long id;
+    private int id;
+    private String name;
 
-    @Column(nullable = false)
-    private String jobTitle;
+    @OneToMany(mappedBy = "nameOfLinks",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Link> links;
 }

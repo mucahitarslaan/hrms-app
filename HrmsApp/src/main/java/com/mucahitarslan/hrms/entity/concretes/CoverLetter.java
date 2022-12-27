@@ -1,37 +1,32 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 @Entity
-@NoArgsConstructor
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Valid
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class Employer extends User {
+public class CoverLetter {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @NotNull
     @NotBlank
-    private String companyName;
+    private String name;
 
     @NotNull
     @NotBlank
-    private String webSite;
+    private String letter;
 
-    @NotNull
-    @NotBlank
-    private String phoneNumber;
-
+    @OneToOne(mappedBy = "coverLetter",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Resume resume;
 }

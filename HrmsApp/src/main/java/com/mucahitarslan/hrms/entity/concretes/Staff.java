@@ -1,37 +1,42 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
-@NoArgsConstructor
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Valid
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class Employer extends User {
+public class Staff extends User{
 
     @NotNull
     @NotBlank
-    private String companyName;
+    private String firstName;
 
     @NotNull
     @NotBlank
-    private String webSite;
+    private String lastName;
 
     @NotNull
     @NotBlank
-    private String phoneNumber;
+    @Size(min = 11, max = 11)
+    @Column(unique = true)
+    private String identityNumber;
+
+    @NotNull
+    @NotBlank
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dateOfBirth;
+
 
 }

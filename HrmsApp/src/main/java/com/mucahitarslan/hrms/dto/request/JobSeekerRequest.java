@@ -8,7 +8,7 @@ public record JobSeekerRequest (
         String name,
         String lastName,
         String identityId,
-        String mail,
+        String email,
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate birthDate,
         String password,

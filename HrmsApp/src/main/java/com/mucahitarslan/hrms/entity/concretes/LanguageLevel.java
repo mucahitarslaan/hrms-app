@@ -6,18 +6,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class JobTitle {
-
+public class LanguageLevel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private long id;
 
-    @Column(nullable = false)
-    private String jobTitle;
+    @NotNull
+    @NotBlank
+    @Size(min = 0, max = 5,message = "please enter number between 0 and 5")
+    private int level;
+
+    @OneToOne(mappedBy = "languageLevel",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Language language;
 }
