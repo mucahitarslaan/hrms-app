@@ -6,7 +6,7 @@ import com.mucahitarslan.hrms.dto.response.EmployerResponse;
 
 import java.util.List;
 
-public interface IEmployerService {
+public interface IEmployerService{
     DataResult<List<EmployerResponse>> findAll();
     DataResult<EmployerResponse> save(EmployerRequest employerRequest);
 }
