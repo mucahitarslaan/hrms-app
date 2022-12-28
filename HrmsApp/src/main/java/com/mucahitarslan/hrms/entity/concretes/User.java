@@ -28,9 +28,8 @@ public abstract class User {
     @NotBlank(message = "password can not be empty")
     private String password;
 
-    @NotNull(message = "address can not be empty")
-    @NotBlank(message = "address can not be empty")
-    private String address;
+    @OneToMany(mappedBy = "user")
+    private List<Address> addresses;
 
     @OneToMany(mappedBy = "user") // TODO:
     private List<Link> links;
