@@ -1,48 +1,82 @@
 package com.mucahitarslan.hrms.security.configuration;
+
+import com.mucahitarslan.hrms.security.core.JWTAuthenticationFilter;
+import com.mucahitarslan.hrms.security.core.JwtAuthEntryPoint;
+import com.mucahitarslan.hrms.security.service.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    private CustomUserDetailsService userDetailsService;
+    private JwtAuthEntryPoint jwtAuthEntryPoint;
 
-    @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
-
-        UserDetails admin = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("password")
-                .roles("ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user, admin);
+    @Autowired
+    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtAuthEntryPoint jwtAuthEntryPoint) {
+        this.userDetailsService = userDetailsService;
+        this.jwtAuthEntryPoint = jwtAuthEntryPoint;
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> {
-                    auth.antMatchers("/").permitAll();
-                    auth.antMatchers("/user").hasRole("USER");
-                    auth.antMatchers("/administrator").hasRole("ADMIN");
-                    // auth.anyRequest().authenticated();
-                })
-                .httpBasic(withDefaults())
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http
+                .csrf().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint(jwtAuthEntryPoint)
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
+
+/*    @Bean
+    public UserDetailsService users(){
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password("12332")
+                .roles("ADMIN")
                 .build();
+
+        UserDetails user = User.builder()
+                .username("user")
+                .password("32112")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(admin,user);
+    }*/
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public JWTAuthenticationFilter jwtAuthenticationFilter(){
+        return new JWTAuthenticationFilter();
     }
 }
