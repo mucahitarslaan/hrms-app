@@ -21,7 +21,6 @@ public class EmployerController {
 
     }
 
-
     @GetMapping()
     public DataResult<List<EmployerResponse>> getAll(){
         return employerService.findAll();

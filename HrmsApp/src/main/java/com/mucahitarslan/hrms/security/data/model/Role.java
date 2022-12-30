@@ -1,27 +1,21 @@
-package com.mucahitarslan.hrms.entity.concretes;
+package com.mucahitarslan.hrms.security.data.model;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-public class Provience {
+@Table(name = "roles_security")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true)
     private String name;
 
-    public Provience() {
-    }
-
-    public Provience(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Role() {
     }
 
     public int getId() {

@@ -2,7 +2,7 @@ package com.mucahitarslan.hrms.entity.concretes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -12,11 +12,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Data
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+//@EqualsAndHashCode(callSuper = true)
+//@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Candidate extends User {
 
     @NotNull
@@ -52,5 +49,49 @@ public class Candidate extends User {
 
     @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL)
     private List<Resume> resumes;
+
+
+
+    public Candidate() {
+    }
+
+    public Candidate(String firstName, String lastName, String identityNumber, LocalDate dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.identityNumber = identityNumber;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getIdentityNumber() {
+        return identityNumber;
+    }
+
+    public void setIdentityNumber(String identityNumber) {
+        this.identityNumber = identityNumber;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
 }
