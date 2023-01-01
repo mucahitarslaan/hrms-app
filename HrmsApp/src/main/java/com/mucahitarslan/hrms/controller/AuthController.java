@@ -1,4 +1,4 @@
-package com.mucahitarslan.hrms.security.controller;
+package com.mucahitarslan.hrms.controller;
 
 import com.mucahitarslan.hrms.security.core.JWTGenerator;
 import com.mucahitarslan.hrms.security.data.model.Role;

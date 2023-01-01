@@ -1,4 +1,4 @@
-package com.mucahitarslan.hrms.security.service;
+package com.mucahitarslan.hrms.service.concretes;
 
 import com.mucahitarslan.hrms.security.dataAccess.IUserSecurityRepository;
 import com.mucahitarslan.hrms.security.data.model.Role;
@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsSecurityService implements UserDetailsService {
     private IUserSecurityRepository userSecurityRepository;
 
     @Autowired
-    public CustomUserDetailsService(IUserSecurityRepository userSecurityRepository) {
+    public CustomUserDetailsSecurityService(IUserSecurityRepository userSecurityRepository) {
         this.userSecurityRepository = userSecurityRepository;
     }
 
