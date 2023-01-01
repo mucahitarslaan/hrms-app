@@ -1,6 +1,6 @@
 package com.mucahitarslan.hrms.security.core;
 
-import com.mucahitarslan.hrms.security.service.CustomUserDetailsService;
+import com.mucahitarslan.hrms.service.concretes.CustomUserDetailsSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,15 +18,15 @@ import java.io.IOException;
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private JWTGenerator tokenGenerator;
-    private CustomUserDetailsService customUserDetailsService;
+    private CustomUserDetailsSecurityService customUserDetailsSecurityService;
 
     public JWTAuthenticationFilter() {
     }
 
     @Autowired
-    public JWTAuthenticationFilter(JWTGenerator tokenGenerator, CustomUserDetailsService customUserDetailsService) {
+    public JWTAuthenticationFilter(JWTGenerator tokenGenerator, CustomUserDetailsSecurityService customUserDetailsSecurityService) {
         this.tokenGenerator = tokenGenerator;
-        this.customUserDetailsService = customUserDetailsService;
+        this.customUserDetailsSecurityService = customUserDetailsSecurityService;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(token) && tokenGenerator.validateToken(token)){
             String userName = tokenGenerator.getUserNameFromJWT(token);
 
-            UserDetails userDetails = customUserDetailsService.loadUserByUsername(userName);
+            UserDetails userDetails = customUserDetailsSecurityService.loadUserByUsername(userName);
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails,
                     null,userDetails.getAuthorities());

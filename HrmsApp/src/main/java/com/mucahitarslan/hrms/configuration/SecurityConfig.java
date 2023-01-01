@@ -1,8 +1,8 @@
-package com.mucahitarslan.hrms.security.configuration;
+package com.mucahitarslan.hrms.configuration;
 
 import com.mucahitarslan.hrms.security.core.JWTAuthenticationFilter;
 import com.mucahitarslan.hrms.security.core.JwtAuthEntryPoint;
-import com.mucahitarslan.hrms.security.service.CustomUserDetailsService;
+import com.mucahitarslan.hrms.service.concretes.CustomUserDetailsSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,11 +19,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    private CustomUserDetailsService userDetailsService;
+    private CustomUserDetailsSecurityService userDetailsService;
     private JwtAuthEntryPoint jwtAuthEntryPoint;
 
     @Autowired
-    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtAuthEntryPoint jwtAuthEntryPoint) {
+    public SecurityConfig(CustomUserDetailsSecurityService userDetailsService, JwtAuthEntryPoint jwtAuthEntryPoint) {
         this.userDetailsService = userDetailsService;
         this.jwtAuthEntryPoint = jwtAuthEntryPoint;
     }
