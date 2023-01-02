@@ -1,9 +1,10 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.*;
-import lombok.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

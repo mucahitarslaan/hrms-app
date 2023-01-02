@@ -1,11 +1,6 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
-import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
+import jakarta.persistence.*;
 
 @Entity
 public class Address {

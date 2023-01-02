@@ -1,9 +1,7 @@
 package com.mucahitarslan.hrms.security.data.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +23,6 @@ public class UserEntity {
 
     public UserEntity() {
     }
-
 
     public int getId() {
         return id;

@@ -1,10 +1,6 @@
 package com.mucahitarslan.hrms.security.data.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "roles_security")
@@ -17,7 +13,6 @@ public class Role {
 
     public Role() {
     }
-
     public int getId() {
         return id;
     }
