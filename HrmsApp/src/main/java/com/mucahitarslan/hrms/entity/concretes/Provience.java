@@ -1,11 +1,7 @@
 package com.mucahitarslan.hrms.entity.concretes;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Provience {
