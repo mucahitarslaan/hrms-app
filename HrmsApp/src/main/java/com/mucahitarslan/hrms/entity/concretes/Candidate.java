@@ -13,8 +13,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-//@EqualsAndHashCode(callSuper = true)
-//@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Candidate extends User {
 
     @NotNull
