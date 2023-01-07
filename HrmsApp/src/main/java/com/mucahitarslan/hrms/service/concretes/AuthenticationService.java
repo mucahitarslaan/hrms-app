@@ -38,7 +38,6 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-
         */
         var user = new User();
         user.setEmail(request.getEmail());

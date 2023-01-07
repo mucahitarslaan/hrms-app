@@ -20,12 +20,12 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
 
-    @GetMapping
+    @GetMapping("/getall")
     public DataResult<List<Candidate>> getAll(){
         return candidateService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public DataResult<Candidate> register(@RequestBody CandidateRequest candidateRequest){
         return candidateService.save(candidateRequest);
     }

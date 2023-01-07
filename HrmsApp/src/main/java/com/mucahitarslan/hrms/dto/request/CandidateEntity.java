@@ -11,7 +11,8 @@ public class CandidateEntity {
         candidate.setFirstName(candidateRequest.getFirstName());
         candidate.setLastName(candidateRequest.getLastName());
         candidate.setIdentityNumber(candidateRequest.getIdentityNumber());
-        candidate.setDateOfBirth(candidateRequest.getDateOfBirth());
+        //candidate.setDateOfBirth(candidateRequest.getDateOfBirth());
+        candidate.setPassword(candidateRequest.getPassword());
         candidate.setEmail(candidateRequest.getEmail());
         candidate.setRole(Role.USER);
         return candidate;
