@@ -1,21 +1,24 @@
 package com.mucahitarslan.hrms.dto.request;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CandidateRequest {
     private String firstName;
     private String lastName;
     private String identityNumber;
-    private LocalDate dateOfBirth;
+//    private LocalDate dateOfBirth;
     private String email;
     private String password;
     private String repassword;
 
-    public CandidateRequest(String firstName, String lastName, String identityNumber, LocalDate dateOfBirth, String email, String password, String repassword) {
+
+    public CandidateRequest(String firstName, String lastName, String identityNumber, String email, String password, String repassword) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identityNumber = identityNumber;
-        this.dateOfBirth = dateOfBirth;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.identityNumber = identityNumber;
         this.email = email;
         this.password = password;
         this.repassword = repassword;
@@ -45,13 +48,6 @@ public class CandidateRequest {
         this.identityNumber = identityNumber;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
     public String getEmail() {
         return email;
