@@ -2,19 +2,20 @@ package com.mucahitarslan.hrms.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.LocalDate;
-
 public class CandidateRequest {
     private String firstName;
     private String lastName;
     private String identityNumber;
-
 //    private LocalDate dateOfBirth;
     private String email;
     private String password;
     private String repassword;
 
+
     public CandidateRequest(String firstName, String lastName, String identityNumber, String email, String password, String repassword) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.identityNumber = identityNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.identityNumber = identityNumber;
