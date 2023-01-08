@@ -25,6 +25,7 @@ public class CandidateController {
         return candidateService.findAll();
     }
 
+
     @PostMapping("/register")
     public DataResult<Candidate> register(@RequestBody CandidateRequest candidateRequest){
         return candidateService.save(candidateRequest);
