@@ -23,4 +23,8 @@ public class AddressService implements IAddressService {
         return new SuccessDataResult<>(addressRepository.findAll(),"All addresses are listed");
     }
 
+    @Override
+    public DataResult<Address> save(Address address){
+        return new SuccessDataResult<>(addressRepository.save(address),"The address is saved");
+    }
 }
