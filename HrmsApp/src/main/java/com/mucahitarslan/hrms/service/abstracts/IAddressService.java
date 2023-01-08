@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IAddressService {
     DataResult<List<Address>> findAll();
+
+    DataResult<Address> save(Address address);
 }
