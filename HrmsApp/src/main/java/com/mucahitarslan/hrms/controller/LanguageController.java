@@ -1,9 +1,30 @@
 package com.mucahitarslan.hrms.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.mucahitarslan.hrms.core.utilities.results.DataResult;
+import com.mucahitarslan.hrms.entity.concretes.JobTitle;
+import com.mucahitarslan.hrms.entity.concretes.Language;
+import com.mucahitarslan.hrms.service.abstracts.IJobTitleService;
+import com.mucahitarslan.hrms.service.abstracts.ILanguageService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/languages")
 public class LanguageController {
+    private final ILanguageService languageService;
+
+    public LanguageController(ILanguageService languageService) {
+        this.languageService = languageService;
+    }
+
+    @GetMapping
+    public DataResult<List<Language>> getAll(){
+        return languageService.getAll();
+    }
+
+    @PostMapping
+    public DataResult<Language> add(@RequestBody Language language){
+        return languageService.add(language);
+    }
 }
