@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/educations")
+@RequestMapping("/api/v1/educations")
 public class EducationController {
     private final IEducationService educationService;
 
@@ -22,7 +22,7 @@ public class EducationController {
     }
 
     @PostMapping
-    public DataResult<Education> add(@RequestBody Education education){
+    public DataResult<Education> save(@RequestBody Education education){
         return educationService.add(education);
     }
 }

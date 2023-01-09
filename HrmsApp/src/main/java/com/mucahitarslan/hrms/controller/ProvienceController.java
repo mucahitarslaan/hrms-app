@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/proviences")
+@RequestMapping("/api/v1/proviences")
 public class ProvienceController {
     private final IProvienceService provienceService;
 
@@ -24,7 +24,7 @@ public class ProvienceController {
     }
 
     @PostMapping
-    public DataResult<Provience> add(@RequestBody Provience provience){
+    public DataResult<Provience> save(@RequestBody Provience provience){
         return provienceService.add(provience);
     }
 }
