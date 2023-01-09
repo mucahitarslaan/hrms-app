@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/addresses")
+@RequestMapping("/api/v1/addresses")
 public class AddressController {
     private final IAddressService addressService;
 
@@ -22,6 +22,5 @@ public class AddressController {
     public DataResult<List<Address>> getAll(){
         return addressService.findAll();
     }
-
 
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/jobtitles")
+@RequestMapping("/api/v1/jobtitles")
 public class JobTitleController {
     private final IJobTitleService jobTitleService;
 
@@ -24,7 +24,7 @@ public class JobTitleController {
     }
 
     @PostMapping
-    public DataResult<JobTitle> add(@RequestBody JobTitle jobTitle){
+    public DataResult<JobTitle> save(@RequestBody JobTitle jobTitle){
         return jobTitleService.add(jobTitle);
     }
 }

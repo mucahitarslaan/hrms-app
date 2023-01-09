@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/nameoflinks")
+@RequestMapping("/api/v1/nameoflinks")
 public class NameOfLinksController {
     private final INameOfLinksService nameOfLinksService;
 
@@ -24,7 +24,7 @@ public class NameOfLinksController {
     }
 
     @PostMapping
-    public DataResult<NameOfLinks> add(@RequestBody NameOfLinks nameOfLinks){
+    public DataResult<NameOfLinks> save(@RequestBody NameOfLinks nameOfLinks){
         return nameOfLinksService.add(nameOfLinks);
     }
 }

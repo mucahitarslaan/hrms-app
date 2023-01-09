@@ -1,6 +1,6 @@
 package com.mucahitarslan.hrms.dto.request;
 
-public class CandidateRequest{
+public class StaffRequest {
     private String firstName;
     private String lastName;
     private String identityNumber;
@@ -8,10 +8,10 @@ public class CandidateRequest{
     private String password;
     private String repassword;
 
-    public CandidateRequest() {
+    public StaffRequest() {
     }
 
-    public CandidateRequest(String firstName, String lastName, String identityNumber, String email, String password, String repassword) {
+    public StaffRequest(String firstName, String lastName, String identityNumber, String email, String password, String repassword) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identityNumber = identityNumber;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/skills")
+@RequestMapping("/api/v1/skills")
 public class SkillController {
     private final ISkillService skillService;
 
@@ -24,7 +24,7 @@ public class SkillController {
     }
 
     @PostMapping
-    public DataResult<Skill> add(@RequestBody Skill skill){
+    public DataResult<Skill> save(@RequestBody Skill skill){
         return skillService.add(skill);
     }
 }
