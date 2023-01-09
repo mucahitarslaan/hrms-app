@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/experiences")
+@RequestMapping("/api/v1/experiences")
 public class ExperinceController {
     private final IExperienceService experienceService;
 
@@ -24,7 +24,7 @@ public class ExperinceController {
     }
 
     @PostMapping
-    public DataResult<Experience> add(@RequestBody Experience experience){
+    public DataResult<Experience> save(@RequestBody Experience experience){
         return experienceService.add(experience);
     }
 }

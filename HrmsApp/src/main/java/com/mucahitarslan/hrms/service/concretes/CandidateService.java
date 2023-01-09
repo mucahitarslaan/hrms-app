@@ -56,7 +56,7 @@ public class CandidateService implements ICandidateService {
             return new SuccessDataResult<>("The candidate is saved");
         }
         else
-            return new ErrorDataResult<>("Password should be same");
+            return new ErrorDataResult<>("Password must be same");
     }
 
     @Override

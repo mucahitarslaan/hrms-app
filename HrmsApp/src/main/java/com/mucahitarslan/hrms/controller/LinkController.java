@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/links")
+@RequestMapping("/api/v1/links")
 public class LinkController {
     private final ILinkService linkService;
 
@@ -24,7 +24,7 @@ public class LinkController {
     }
 
     @PostMapping
-    public DataResult<Link> add(@RequestBody Link link){
+    public DataResult<Link> save(@RequestBody Link link){
         return linkService.add(link);
     }
 }

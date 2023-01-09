@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/useractivations")
+@RequestMapping("/api/v1/useractivations")
 public class UserActivationController {
     private final IUserActivationService userActivationService;
 
@@ -25,7 +25,7 @@ public class UserActivationController {
     }
 
     @PostMapping
-    public DataResult<UserActivation> add(@RequestBody UserActivation userActivation){
+    public DataResult<UserActivation> save(@RequestBody UserActivation userActivation){
         return userActivationService.add(userActivation);
     }
 }

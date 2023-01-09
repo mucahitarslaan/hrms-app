@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/resumes")
+@RequestMapping("/api/v1/resumes")
 public class ResumeController {
     private final IResumeService resumeService;
 
@@ -24,7 +24,7 @@ public class ResumeController {
     }
 
     @PostMapping
-    public DataResult<Resume> add(@RequestBody Resume resume){
+    public DataResult<Resume> save(@RequestBody Resume resume){
         return resumeService.add(resume);
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/languages")
+@RequestMapping("/api/v1/languages")
 public class LanguageController {
     private final ILanguageService languageService;
 
@@ -24,7 +24,7 @@ public class LanguageController {
     }
 
     @PostMapping
-    public DataResult<Language> add(@RequestBody Language language){
+    public DataResult<Language> save(@RequestBody Language language){
         return languageService.add(language);
     }
 }

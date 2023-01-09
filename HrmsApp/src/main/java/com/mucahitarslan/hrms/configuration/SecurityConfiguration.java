@@ -28,6 +28,57 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers( "/api/v1/auth/login",
+                                            "/api/v1/auth/register",
+                                            "/api/v1/candidates/login",
+                                            "/api/v1/candidates/register",
+                                            "/api/v1/employers/login",
+                                            "/api/v1/employers/register",
+                                            "/api/v1/staffs/login",
+                                            "/api/v1/staffs/register")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+/*    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf()
+                .disable()
+                .authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/api/v1/auth/login").permitAll()
+                        .requestMatchers("/api/v1/auth/register").permitAll()
+                        .requestMatchers("/api/v1/candidates/login").permitAll()
+                        .requestMatchers("/api/v1/candidates/register").permitAll()
+                        .requestMatchers("/api/v1/employers/login").permitAll()
+                        .requestMatchers("/api/v1/employers/register").permitAll()
+                        .requestMatchers("/api/v1/staffs/login").permitAll()
+                        .requestMatchers("/api/v1/staffs/register").permitAll()
+                )
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }*/
+
+/*    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf()
+                .disable()
+                .authorizeHttpRequests()
                 //.requestMatchers("/api/v1/auth/**")
                 //.requestMatchers("/api/v1/auth/**","/api/v1/candidates/register","/api/v1/candidates/login")
                 .requestMatchers("/api/v1/candidates/**")
@@ -42,5 +93,5 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
+    }*/
 }

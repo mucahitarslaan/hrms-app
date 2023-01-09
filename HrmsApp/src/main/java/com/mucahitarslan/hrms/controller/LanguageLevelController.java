@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/languagelevels")
+@RequestMapping("/api/v1/languagelevels")
 public class LanguageLevelController {
     private final ILanguageLevelService languageLevelService;
 
@@ -24,7 +24,7 @@ public class LanguageLevelController {
     }
 
     @PostMapping
-    public DataResult<LanguageLevel> add(@RequestBody LanguageLevel languageLevel){
+    public DataResult<LanguageLevel> save(@RequestBody LanguageLevel languageLevel){
         return languageLevelService.add(languageLevel);
     }
 }
