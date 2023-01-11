@@ -18,12 +18,12 @@ public class LanguageLevelController {
         this.languageLevelService = languageLevelService;
     }
 
-    @GetMapping
-    public DataResult<List<LanguageLevel>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<LanguageLevel>> findAll(){
         return languageLevelService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<LanguageLevel> save(@RequestBody LanguageLevel languageLevel){
         return languageLevelService.add(languageLevel);
     }

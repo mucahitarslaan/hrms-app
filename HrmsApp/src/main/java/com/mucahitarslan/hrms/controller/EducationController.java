@@ -16,12 +16,12 @@ public class EducationController {
         this.educationService = educationService;
     }
 
-    @GetMapping
-    public DataResult<List<Education>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Education>> findAll(){
         return educationService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Education> save(@RequestBody Education education){
         return educationService.add(education);
     }

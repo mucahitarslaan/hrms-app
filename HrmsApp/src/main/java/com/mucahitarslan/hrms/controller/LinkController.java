@@ -18,12 +18,12 @@ public class LinkController {
         this.linkService = linkService;
     }
 
-    @GetMapping
-    public DataResult<List<Link>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Link>> findAll(){
         return linkService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Link> save(@RequestBody Link link){
         return linkService.add(link);
     }

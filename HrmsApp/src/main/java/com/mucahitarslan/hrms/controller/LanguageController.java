@@ -18,12 +18,12 @@ public class LanguageController {
         this.languageService = languageService;
     }
 
-    @GetMapping
-    public DataResult<List<Language>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Language>> findAll(){
         return languageService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Language> save(@RequestBody Language language){
         return languageService.add(language);
     }

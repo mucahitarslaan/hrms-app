@@ -23,8 +23,8 @@ public class EmployerController {
 
     }
 
-    @GetMapping("/getall")
-    public DataResult<List<EmployerResponse>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<EmployerResponse>> findAll(){
         return employerService.findAll();
     }
 

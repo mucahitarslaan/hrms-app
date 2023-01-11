@@ -18,12 +18,12 @@ public class NameOfLinksController {
         this.nameOfLinksService = nameOfLinksService;
     }
 
-    @GetMapping
-    public DataResult<List<NameOfLinks>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<NameOfLinks>> findAll(){
         return nameOfLinksService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<NameOfLinks> save(@RequestBody NameOfLinks nameOfLinks){
         return nameOfLinksService.add(nameOfLinks);
     }
