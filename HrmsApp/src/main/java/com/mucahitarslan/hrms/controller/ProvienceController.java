@@ -23,7 +23,6 @@ public class ProvienceController {
         return provienceService.getAll();
     }
 
-
     @PostMapping("/save")
     public DataResult<Provience> save(@RequestBody Provience provience){
         return provienceService.add(provience);
