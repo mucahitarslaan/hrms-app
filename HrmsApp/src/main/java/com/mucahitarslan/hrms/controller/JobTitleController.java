@@ -18,12 +18,12 @@ public class JobTitleController {
         this.jobTitleService = jobTitleService;
     }
 
-    @GetMapping
-    public DataResult<List<JobTitle>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<JobTitle>> findAll(){
         return jobTitleService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<JobTitle> save(@RequestBody JobTitle jobTitle){
         return jobTitleService.add(jobTitle);
     }

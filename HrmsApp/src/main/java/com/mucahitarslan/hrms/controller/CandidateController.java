@@ -20,8 +20,8 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
 
-    @GetMapping("/getall")
-    public DataResult<List<Candidate>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Candidate>> findAll(){
         return candidateService.findAll();
     }
 

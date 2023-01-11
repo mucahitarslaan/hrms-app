@@ -19,12 +19,12 @@ public class UserActivationController {
         this.userActivationService = userActivationService;
     }
 
-    @GetMapping
-    public DataResult<List<UserActivation>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<UserActivation>> findAll(){
         return userActivationService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<UserActivation> save(@RequestBody UserActivation userActivation){
         return userActivationService.add(userActivation);
     }

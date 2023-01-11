@@ -18,12 +18,12 @@ public class ResumeController {
         this.resumeService = resumeService;
     }
 
-    @GetMapping
-    public DataResult<List<Resume>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Resume>> findAll(){
         return resumeService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Resume> save(@RequestBody Resume resume){
         return resumeService.add(resume);
     }
