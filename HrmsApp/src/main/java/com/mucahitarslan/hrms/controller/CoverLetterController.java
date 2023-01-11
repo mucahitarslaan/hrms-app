@@ -19,6 +19,7 @@ public class CoverLetterController {
         this.coverLetterService = coverLetterService;
     }
 
+
     @GetMapping("/findAll")
     public DataResult<List<CoverLetter>> findAll(){
         return coverLetterService.findAll();
