@@ -24,8 +24,8 @@ public class StaffController {
     }
 
 
-    @GetMapping("/getall")
-    public DataResult<List<Staff>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Staff>> findAll(){
         return staffService.getAll();
     }
 

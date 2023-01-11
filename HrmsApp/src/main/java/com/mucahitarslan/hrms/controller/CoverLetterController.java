@@ -19,12 +19,12 @@ public class CoverLetterController {
         this.coverLetterService = coverLetterService;
     }
 
-    @GetMapping
-    public DataResult<List<CoverLetter>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<CoverLetter>> findAll(){
         return coverLetterService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<CoverLetter> save(@RequestBody CoverLetter coverLetter){
         return coverLetterService.save(coverLetter);
     }

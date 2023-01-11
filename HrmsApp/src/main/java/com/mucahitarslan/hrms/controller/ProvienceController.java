@@ -18,12 +18,12 @@ public class ProvienceController {
         this.provienceService = provienceService;
     }
 
-    @GetMapping
-    public DataResult<List<Provience>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Provience>> findAll(){
         return provienceService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Provience> save(@RequestBody Provience provience){
         return provienceService.add(provience);
     }

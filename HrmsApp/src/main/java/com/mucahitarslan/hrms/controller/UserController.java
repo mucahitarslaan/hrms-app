@@ -18,8 +18,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public DataResult<List<User>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<User>> findAll(){
         return userService.getAll();
     }
 }

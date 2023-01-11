@@ -18,8 +18,8 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping
-    public DataResult<List<Address>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Address>> findAll(){
         return addressService.findAll();
     }
 

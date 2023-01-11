@@ -18,12 +18,12 @@ public class SkillController {
         this.skillService = skillService;
     }
 
-    @GetMapping
-    public DataResult<List<Skill>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Skill>> findAll(){
         return skillService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Skill> save(@RequestBody Skill skill){
         return skillService.add(skill);
     }

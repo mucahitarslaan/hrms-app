@@ -18,12 +18,12 @@ public class ExperinceController {
         this.experienceService = experienceService;
     }
 
-    @GetMapping
-    public DataResult<List<Experience>> getAll(){
+    @GetMapping("/findAll")
+    public DataResult<List<Experience>> findAll(){
         return experienceService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public DataResult<Experience> save(@RequestBody Experience experience){
         return experienceService.add(experience);
     }
