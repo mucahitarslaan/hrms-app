@@ -23,10 +23,6 @@ public class ExperinceController {
         return experienceService.getAll();
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9554777ec32bac931e843a7269960d4203d1be51
     @PostMapping("/save")
     public DataResult<Experience> save(@RequestBody Experience experience){
         return experienceService.add(experience);

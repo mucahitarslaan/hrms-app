@@ -19,10 +19,6 @@ public class CoverLetterController {
         this.coverLetterService = coverLetterService;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9554777ec32bac931e843a7269960d4203d1be51
     @GetMapping("/findAll")
     public DataResult<List<CoverLetter>> findAll(){
         return coverLetterService.findAll();

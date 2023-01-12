@@ -5,12 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mucahitarslan.hrms.dto.request.RegisterRequest;
 import com.mucahitarslan.hrms.dto.response.AuthenticationResponse;
 import com.mucahitarslan.hrms.service.concretes.AuthenticationService;
+import io.restassured.module.mockmvc.response.MockMvcResponse;
 import net.bytebuddy.asm.Advice;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,6 +22,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.RequestMatcher;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MockMvcBuilder;
+import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher.*;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -30,10 +35,18 @@ class AuthenticationControllerTest {
     @MockBean
     private AuthenticationService service;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     MockMvc mockMvc;
+
+    @BeforeEach
+    void setup(){
+        RegisterRequest request = new RegisterRequest(
+                "user@gmail.com",
+                "password"
+        );
+        var response = service.register(request);
+    }
 
     @Test
     void itShouldRegister_WhenValidRegisterRequestBody() throws Exception {
@@ -49,15 +62,9 @@ class AuthenticationControllerTest {
                 .thenReturn(response);
 
             mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(serializeJson(request)))
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(any());
+                .content(objectMapper.writeValueAsString(request))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
 
     }
-    private String serializeJson(Object object) throws JsonProcessingException{
-        return objectMapper.writeValueAsString(object);
-    }
-
-
 }
