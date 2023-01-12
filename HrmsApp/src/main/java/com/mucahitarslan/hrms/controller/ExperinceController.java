@@ -23,7 +23,6 @@ public class ExperinceController {
         return experienceService.getAll();
     }
 
-
     @PostMapping("/save")
     public DataResult<Experience> save(@RequestBody Experience experience){
         return experienceService.add(experience);
