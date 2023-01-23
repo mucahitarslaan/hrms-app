@@ -27,4 +27,5 @@ public class AddressService implements IAddressService {
     public DataResult<Address> save(Address address){
         return new SuccessDataResult<>(addressRepository.save(address),"The address is saved");
     }
+
 }
