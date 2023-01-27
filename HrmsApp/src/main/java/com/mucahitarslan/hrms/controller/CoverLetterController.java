@@ -6,6 +6,8 @@ import com.mucahitarslan.hrms.entity.concretes.CoverLetter;
 import com.mucahitarslan.hrms.entity.concretes.NameOfLinks;
 import com.mucahitarslan.hrms.service.abstracts.ICoverLetterService;
 import com.mucahitarslan.hrms.service.abstracts.INameOfLinksService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +22,12 @@ public class CoverLetterController {
     }
 
     @GetMapping("/findAll")
-    public DataResult<List<CoverLetter>> findAll(){
-        return coverLetterService.findAll();
+    public ResponseEntity<DataResult<List<CoverLetter>>> findAll(){
+        return new ResponseEntity<>(coverLetterService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public DataResult<CoverLetter> save(@RequestBody CoverLetter coverLetter){
-        return coverLetterService.save(coverLetter);
+    public ResponseEntity<DataResult<CoverLetter>> save(@RequestBody CoverLetter coverLetter){
+        return new ResponseEntity<>(coverLetterService.save(coverLetter), HttpStatus.CREATED);
     }
 }

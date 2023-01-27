@@ -4,7 +4,6 @@ import com.mucahitarslan.hrms.dto.request.AuthenticationRequest;
 import com.mucahitarslan.hrms.dto.request.RegisterRequest;
 import com.mucahitarslan.hrms.dto.response.AuthenticationResponse;
 import com.mucahitarslan.hrms.service.concretes.AuthenticationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
