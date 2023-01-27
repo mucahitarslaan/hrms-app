@@ -6,6 +6,8 @@ import com.mucahitarslan.hrms.entity.concretes.UserActivation;
 import com.mucahitarslan.hrms.service.abstracts.IStaffService;
 import com.mucahitarslan.hrms.service.abstracts.IUserActivationService;
 import com.mucahitarslan.hrms.service.abstracts.IUserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +22,12 @@ public class UserActivationController {
     }
 
     @GetMapping("/findAll")
-    public DataResult<List<UserActivation>> findAll(){
-        return userActivationService.getAll();
+    public ResponseEntity<DataResult<List<UserActivation>>> findAll(){
+        return new ResponseEntity<>(userActivationService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public DataResult<UserActivation> save(@RequestBody UserActivation userActivation){
-        return userActivationService.add(userActivation);
+    public ResponseEntity<DataResult<UserActivation>> save(@RequestBody UserActivation userActivation){
+        return new ResponseEntity<>(userActivationService.add(userActivation),HttpStatus.CREATED);
     }
 }

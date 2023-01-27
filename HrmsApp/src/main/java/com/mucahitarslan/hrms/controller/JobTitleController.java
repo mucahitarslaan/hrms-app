@@ -5,6 +5,8 @@ import com.mucahitarslan.hrms.entity.concretes.Experience;
 import com.mucahitarslan.hrms.entity.concretes.JobTitle;
 import com.mucahitarslan.hrms.service.abstracts.IExperienceService;
 import com.mucahitarslan.hrms.service.abstracts.IJobTitleService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +21,12 @@ public class JobTitleController {
     }
 
     @GetMapping("/findAll")
-    public DataResult<List<JobTitle>> findAll(){
-        return jobTitleService.getAll();
+    public ResponseEntity<DataResult<List<JobTitle>>> findAll(){
+        return new ResponseEntity<>(jobTitleService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public DataResult<JobTitle> save(@RequestBody JobTitle jobTitle){
-        return jobTitleService.add(jobTitle);
+    public ResponseEntity<DataResult<JobTitle>> save(@RequestBody JobTitle jobTitle){
+        return new ResponseEntity<>(jobTitleService.add(jobTitle), HttpStatus.CREATED);
     }
 }

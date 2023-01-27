@@ -5,6 +5,8 @@ import com.mucahitarslan.hrms.entity.concretes.Education;
 import com.mucahitarslan.hrms.entity.concretes.Experience;
 import com.mucahitarslan.hrms.service.abstracts.IEducationService;
 import com.mucahitarslan.hrms.service.abstracts.IExperienceService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +21,12 @@ public class ExperinceController {
     }
 
     @GetMapping("/findAll")
-    public DataResult<List<Experience>> findAll(){
-        return experienceService.getAll();
+    public ResponseEntity<DataResult<List<Experience>>> findAll(){
+        return new ResponseEntity<>(experienceService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public DataResult<Experience> save(@RequestBody Experience experience){
-        return experienceService.add(experience);
+    public ResponseEntity<DataResult<Experience>> save(@RequestBody Experience experience){
+        return new ResponseEntity<>(experienceService.add(experience), HttpStatus.CREATED);
     }
 }

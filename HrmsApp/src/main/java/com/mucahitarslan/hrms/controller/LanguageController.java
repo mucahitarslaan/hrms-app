@@ -5,6 +5,8 @@ import com.mucahitarslan.hrms.entity.concretes.JobTitle;
 import com.mucahitarslan.hrms.entity.concretes.Language;
 import com.mucahitarslan.hrms.service.abstracts.IJobTitleService;
 import com.mucahitarslan.hrms.service.abstracts.ILanguageService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +21,12 @@ public class LanguageController {
     }
 
     @GetMapping("/findAll")
-    public DataResult<List<Language>> findAll(){
-        return languageService.getAll();
+    public ResponseEntity<DataResult<List<Language>>> findAll(){
+        return new ResponseEntity<>(languageService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public DataResult<Language> save(@RequestBody Language language){
-        return languageService.add(language);
+    public ResponseEntity<DataResult<Language>> save(@RequestBody Language language){
+        return new ResponseEntity<>(languageService.add(language), HttpStatus.CREATED);
     }
 }

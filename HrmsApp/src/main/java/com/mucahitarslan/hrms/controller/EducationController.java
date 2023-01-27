@@ -3,6 +3,8 @@ package com.mucahitarslan.hrms.controller;
 import com.mucahitarslan.hrms.core.utilities.results.DataResult;
 import com.mucahitarslan.hrms.entity.concretes.Education;
 import com.mucahitarslan.hrms.service.abstracts.IEducationService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +19,12 @@ public class EducationController {
     }
 
     @GetMapping("/findAll")
-    public DataResult<List<Education>> findAll(){
-        return educationService.getAll();
+    public ResponseEntity<DataResult<List<Education>>> findAll(){
+        return new ResponseEntity<>(educationService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public DataResult<Education> save(@RequestBody Education education){
-        return educationService.add(education);
+    public ResponseEntity<DataResult<Education>> save(@RequestBody Education education){
+        return new ResponseEntity<>(educationService.add(education), HttpStatus.CREATED);
     }
 }

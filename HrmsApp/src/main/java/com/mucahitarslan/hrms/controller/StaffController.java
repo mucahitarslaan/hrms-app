@@ -10,6 +10,8 @@ import com.mucahitarslan.hrms.entity.concretes.Skill;
 import com.mucahitarslan.hrms.entity.concretes.Staff;
 import com.mucahitarslan.hrms.service.abstracts.ISkillService;
 import com.mucahitarslan.hrms.service.abstracts.IStaffService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,17 +27,17 @@ public class StaffController {
 
 
     @GetMapping("/findAll")
-    public DataResult<List<Staff>> findAll(){
-        return staffService.getAll();
+    public ResponseEntity<DataResult<List<Staff>>> findAll(){
+        return new ResponseEntity<>(staffService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public DataResult<Staff> register(@RequestBody StaffRequest staffRequest){
-        return staffService.save(staffRequest);
+    public ResponseEntity<DataResult<Staff>> register(@RequestBody StaffRequest staffRequest){
+        return new ResponseEntity<>(staffService.save(staffRequest), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public AuthenticationResponse authenticate(@RequestBody AuthenticationRequest authenticationRequest){
-        return staffService.authenticate(authenticationRequest);
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authenticationRequest){
+        return new ResponseEntity<>(staffService.authenticate(authenticationRequest), HttpStatus.ACCEPTED);
     }
 }
