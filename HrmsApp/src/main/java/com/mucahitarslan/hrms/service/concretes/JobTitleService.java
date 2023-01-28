@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IJobTitleRepository;
 import com.mucahitarslan.hrms.entity.concretes.JobTitle;
 import com.mucahitarslan.hrms.service.abstracts.IJobTitleService;
@@ -18,12 +16,12 @@ public class JobTitleService implements IJobTitleService {
     }
 
     @Override
-    public DataResult<JobTitle> add(JobTitle jobTitle) {
-        return new SuccessDataResult<>(jobTitleRepository.save(jobTitle),"The job title is saved successfully");
+    public JobTitle add(JobTitle jobTitle) {
+        return jobTitleRepository.save(jobTitle);
     }
 
     @Override
-    public DataResult<List<JobTitle>> getAll() {
-        return new SuccessDataResult<>(jobTitleRepository.findAll(),"The job titles are listed");
+    public List<JobTitle> getAll() {
+        return jobTitleRepository.findAll();
     }
 }

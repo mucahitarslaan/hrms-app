@@ -6,7 +6,6 @@ import com.mucahitarslan.hrms.dto.request.RegisterRequest;
 import com.mucahitarslan.hrms.dto.response.AuthenticationResponse;
 import com.mucahitarslan.hrms.entity.concretes.Role;
 import com.mucahitarslan.hrms.entity.concretes.User;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;

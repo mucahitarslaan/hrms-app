@@ -1,6 +1,5 @@
 package com.mucahitarslan.hrms.controller;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
 import com.mucahitarslan.hrms.entity.concretes.Address;
 import com.mucahitarslan.hrms.service.abstracts.IAddressService;
 import org.springframework.http.HttpStatus;
@@ -21,7 +20,7 @@ public class AddressController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<DataResult<List<Address>>> findAll(){
+    public ResponseEntity<List<Address>> findAll(){
         return new ResponseEntity<>(addressService.findAll(), HttpStatus.OK);
     }
 

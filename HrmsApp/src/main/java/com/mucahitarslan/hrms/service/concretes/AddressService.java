@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IAddressRepository;
 import com.mucahitarslan.hrms.entity.concretes.Address;
 import com.mucahitarslan.hrms.service.abstracts.IAddressService;
@@ -19,13 +17,13 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public DataResult<List<Address>> findAll() {
-        return new SuccessDataResult<>(addressRepository.findAll(),"All addresses are listed");
+    public List<Address> findAll() {
+        return addressRepository.findAll();
     }
 
     @Override
-    public DataResult<Address> save(Address address){
-        return new SuccessDataResult<>(addressRepository.save(address),"The address is saved");
+    public Address save(Address address){
+        return addressRepository.save(address);
     }
 
 }

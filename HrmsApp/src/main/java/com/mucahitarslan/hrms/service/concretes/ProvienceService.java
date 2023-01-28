@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IProvienceRepository;
 import com.mucahitarslan.hrms.entity.concretes.Provience;
 import com.mucahitarslan.hrms.service.abstracts.IProvienceService;
@@ -18,12 +16,12 @@ public class ProvienceService implements IProvienceService {
     }
 
     @Override
-    public DataResult<Provience> add(Provience provience) {
-        return new SuccessDataResult<>(provienceRepository.save(provience),"The provience is saved successfully");
+    public Provience add(Provience provience) {
+        return provienceRepository.save(provience);
     }
 
     @Override
-    public DataResult<List<Provience>> getAll() {
-        return new SuccessDataResult<>(provienceRepository.findAll(),"The proviences are listed");
+    public List<Provience> getAll() {
+        return provienceRepository.findAll();
     }
 }

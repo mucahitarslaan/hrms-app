@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IUserRepository;
 import com.mucahitarslan.hrms.entity.concretes.User;
 import com.mucahitarslan.hrms.service.abstracts.IUserService;
@@ -18,7 +16,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public DataResult<List<User>> getAll() {
-        return new SuccessDataResult<>(userRepository.findAll(),"All users are listed");
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.ILanguageLevelRepository;
 import com.mucahitarslan.hrms.entity.concretes.LanguageLevel;
 import com.mucahitarslan.hrms.service.abstracts.ILanguageLevelService;
@@ -18,12 +16,12 @@ public class LanguageLevelService implements ILanguageLevelService {
     }
 
     @Override
-    public DataResult<LanguageLevel> add(LanguageLevel languageLevel) {
-        return new SuccessDataResult<>(languageLevelRepository.save(languageLevel),"The language level is saved successfully");
+    public LanguageLevel add(LanguageLevel languageLevel) {
+        return languageLevelRepository.save(languageLevel);
     }
 
     @Override
-    public DataResult<List<LanguageLevel>> getAll() {
-        return new SuccessDataResult<>(languageLevelRepository.findAll(),"The language levels are listed");
+    public List<LanguageLevel> getAll() {
+        return languageLevelRepository.findAll();
     }
 }
