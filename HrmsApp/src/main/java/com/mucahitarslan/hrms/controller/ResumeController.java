@@ -1,9 +1,6 @@
 package com.mucahitarslan.hrms.controller;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.entity.concretes.Provience;
 import com.mucahitarslan.hrms.entity.concretes.Resume;
-import com.mucahitarslan.hrms.service.abstracts.IProvienceService;
 import com.mucahitarslan.hrms.service.abstracts.IResumeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +18,12 @@ public class ResumeController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<DataResult<List<Resume>>> findAll(){
+    public ResponseEntity<List<Resume>> findAll(){
         return new ResponseEntity<>(resumeService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<DataResult<Resume>> save(@RequestBody Resume resume){
+    public ResponseEntity<Resume> save(@RequestBody Resume resume){
         return new ResponseEntity<>(resumeService.add(resume), HttpStatus.CREATED);
     }
 }

@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IExperienceRepository;
 import com.mucahitarslan.hrms.entity.concretes.Experience;
 import com.mucahitarslan.hrms.service.abstracts.IExperienceService;
@@ -19,12 +17,12 @@ public class ExperienceService implements IExperienceService {
     }
 
     @Override
-    public DataResult<Experience> add(Experience experience) {
-        return new SuccessDataResult<>(experienceRepository.save(experience),"The experience is saved successfully");
+    public Experience add(Experience experience) {
+        return experienceRepository.save(experience);
     }
 
     @Override
-    public DataResult<List<Experience>> getAll() {
-        return new SuccessDataResult<>(experienceRepository.findAll(),"The experiences are listed");
+    public List<Experience> getAll() {
+        return experienceRepository.findAll();
     }
 }

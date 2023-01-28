@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IResumeRepository;
 import com.mucahitarslan.hrms.entity.concretes.Resume;
 import com.mucahitarslan.hrms.service.abstracts.IResumeService;
@@ -18,12 +16,12 @@ public class ResumeService implements IResumeService {
     }
 
     @Override
-    public DataResult<Resume> add(Resume resume) {
-        return new SuccessDataResult<>(resumeRepository.save(resume),"The resume is saved successfully");
+    public Resume add(Resume resume) {
+        return resumeRepository.save(resume);
     }
 
     @Override
-    public DataResult<List<Resume>> getAll() {
-        return new SuccessDataResult<>(resumeRepository.findAll(),"The resumes are listed");
+    public List<Resume> getAll() {
+        return resumeRepository.findAll();
     }
 }

@@ -1,9 +1,6 @@
 package com.mucahitarslan.hrms.controller;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.entity.concretes.LanguageLevel;
 import com.mucahitarslan.hrms.entity.concretes.Link;
-import com.mucahitarslan.hrms.service.abstracts.ILanguageLevelService;
 import com.mucahitarslan.hrms.service.abstracts.ILinkService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +18,12 @@ public class LinkController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<DataResult<List<Link>>> findAll(){
+    public ResponseEntity<List<Link>> findAll(){
         return new ResponseEntity<>(linkService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<DataResult<Link>> save(@RequestBody Link link){
+    public ResponseEntity<Link> save(@RequestBody Link link){
         return new ResponseEntity<>(linkService.add(link),HttpStatus.CREATED);
     }
 }

@@ -1,12 +1,10 @@
 package com.mucahitarslan.hrms.controller;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
 import com.mucahitarslan.hrms.dto.request.AuthenticationRequest;
 import com.mucahitarslan.hrms.dto.request.EmployerRequest;
 import com.mucahitarslan.hrms.dto.response.AuthenticationResponse;
 import com.mucahitarslan.hrms.dto.response.EmployerResponse;
 import com.mucahitarslan.hrms.service.abstracts.IEmployerService;
-import com.mucahitarslan.hrms.service.concretes.EmployerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +24,12 @@ public class EmployerController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<DataResult<List<EmployerResponse>>> findAll(){
+    public ResponseEntity<List<EmployerResponse>> findAll(){
         return new ResponseEntity<>(employerService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<DataResult<EmployerResponse>> save(@RequestBody EmployerRequest employerRequest){
+    public ResponseEntity<EmployerResponse> save(@RequestBody EmployerRequest employerRequest){
         return new ResponseEntity<>(employerService.save(employerRequest), HttpStatus.CREATED);
     }
 

@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.INameOfLinksRepository;
 import com.mucahitarslan.hrms.entity.concretes.NameOfLinks;
 import com.mucahitarslan.hrms.service.abstracts.INameOfLinksService;
@@ -18,12 +16,12 @@ public class NameOfLinksService implements INameOfLinksService {
     }
 
     @Override
-    public DataResult<NameOfLinks> add(NameOfLinks nameOfLinks) {
-        return new SuccessDataResult<>(nameOfLinksRepository.save(nameOfLinks),"The name of link is saved successfully");
+    public NameOfLinks add(NameOfLinks nameOfLinks) {
+        return nameOfLinksRepository.save(nameOfLinks);
     }
 
     @Override
-    public DataResult<List<NameOfLinks>> getAll() {
-        return new SuccessDataResult<>(nameOfLinksRepository.findAll(),"The name of links are listed");
+    public List<NameOfLinks> getAll() {
+        return nameOfLinksRepository.findAll();
     }
 }

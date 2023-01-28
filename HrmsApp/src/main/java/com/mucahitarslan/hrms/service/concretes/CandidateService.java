@@ -1,8 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.ErrorDataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.ICandidateRepository;
 import com.mucahitarslan.hrms.dto.request.AuthenticationRequest;
 import com.mucahitarslan.hrms.dto.request.CandidateEntity;
@@ -38,12 +35,12 @@ public class CandidateService implements ICandidateService {
     }
 
     @Override
-    public DataResult<List<Candidate>> findAll() {
-        return new SuccessDataResult<>(candidateRepository.findAll(),"All candidates are listed");
+    public List<Candidate> findAll() {
+        return candidateRepository.findAll();
     }
 
     @Override
-    public DataResult<Candidate> save(CandidateRequest candidateRequest) {
+    public Candidate save(CandidateRequest candidateRequest) {
         if (candidateRequest.getPassword().equals(candidateRequest.getRepassword())){
             candidateRequest.setPassword(passwordEncoder.encode(candidateRequest.getPassword()));
             var candidatedb = candidateEntity.toCandidate(candidateRequest);
@@ -53,10 +50,10 @@ public class CandidateService implements ICandidateService {
             var authresponse = new AuthenticationResponse();
             authresponse.setToken(jwtToken);
             System.out.println(authresponse);
-            return new SuccessDataResult<>("The candidate is saved");
+            return candidatedb;
         }
         else
-            return new ErrorDataResult<>("Password must be same");
+            return new Candidate();
     }
 
     @Override

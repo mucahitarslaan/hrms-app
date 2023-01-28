@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.ISkillRepository;
 import com.mucahitarslan.hrms.entity.concretes.Skill;
 import com.mucahitarslan.hrms.service.abstracts.ISkillService;
@@ -19,12 +17,12 @@ public class SkillService implements ISkillService {
     }
 
     @Override
-    public DataResult<Skill> add(Skill skill) {
-        return new SuccessDataResult<>(skillRepository.save(skill),"The skill is saved successfully");
+    public Skill add(Skill skill) {
+        return skillRepository.save(skill);
     }
 
     @Override
-    public DataResult<List<Skill>> getAll() {
-        return new SuccessDataResult<>(skillRepository.findAll(),"The skills are listed");
+    public List<Skill> getAll() {
+        return skillRepository.findAll();
     }
 }

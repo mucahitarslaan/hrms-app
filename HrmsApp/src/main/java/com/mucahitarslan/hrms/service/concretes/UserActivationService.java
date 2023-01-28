@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IUserActivationRepository;
 import com.mucahitarslan.hrms.entity.concretes.UserActivation;
 import com.mucahitarslan.hrms.service.abstracts.IUserActivationService;
@@ -18,12 +16,12 @@ public class UserActivationService implements IUserActivationService {
     }
 
     @Override
-    public DataResult<UserActivation> add(UserActivation userActivation) {
-        return new SuccessDataResult<>(userActivationRepository.save(userActivation),"The user activation is saved successfully");
+    public UserActivation add(UserActivation userActivation) {
+        return userActivationRepository.save(userActivation);
     }
 
     @Override
-    public DataResult<List<UserActivation>> getAll() {
-        return new SuccessDataResult<>(userActivationRepository.findAll(),"The user activations are listed");
+    public List<UserActivation> getAll() {
+        return userActivationRepository.findAll();
     }
 }

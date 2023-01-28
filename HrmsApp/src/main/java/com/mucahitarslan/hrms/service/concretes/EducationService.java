@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IEducationRepository;
 import com.mucahitarslan.hrms.entity.concretes.Education;
 import com.mucahitarslan.hrms.service.abstracts.IEducationService;
@@ -18,13 +16,13 @@ public class EducationService implements IEducationService {
     }
 
     @Override
-    public DataResult<Education> add(Education education) {
-        return new SuccessDataResult<>(educationRepository.save(education),"Education infos added successfully");
+    public Education add(Education education) {
+        return educationRepository.save(education);
     }
 
     @Override
-    public DataResult<List<Education>> getAll() {
-        return new SuccessDataResult<>(educationRepository.findAll(),"Educations are listed");
+    public List<Education> getAll() {
+        return educationRepository.findAll();
     }
 
 }

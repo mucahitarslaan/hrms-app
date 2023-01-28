@@ -1,10 +1,9 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.ErrorDataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.IStaffRepository;
-import com.mucahitarslan.hrms.dto.request.*;
+import com.mucahitarslan.hrms.dto.request.AuthenticationRequest;
+import com.mucahitarslan.hrms.dto.request.StaffEntity;
+import com.mucahitarslan.hrms.dto.request.StaffRequest;
 import com.mucahitarslan.hrms.dto.response.AuthenticationResponse;
 import com.mucahitarslan.hrms.entity.concretes.Staff;
 import com.mucahitarslan.hrms.service.abstracts.IStaffService;
@@ -36,12 +35,12 @@ public class StaffService implements IStaffService {
     }
 
     @Override
-    public DataResult<List<Staff>> getAll() {
-        return new SuccessDataResult<>(staffRepository.findAll(),"The staffs are listed");
+    public List<Staff> getAll() {
+        return staffRepository.findAll();
     }
 
     @Override
-    public DataResult<Staff> save(StaffRequest staffRequest) {
+    public Staff save(StaffRequest staffRequest) {
         if (staffRequest.getPassword().equals(staffRequest.getRepassword())){
             staffRequest.setPassword(passwordEncoder.encode(staffRequest.getPassword()));
             var staffdb = staffEntity.toStaff(staffRequest);
@@ -51,10 +50,10 @@ public class StaffService implements IStaffService {
             var authresponse = new AuthenticationResponse();
             authresponse.setToken(jwtToken);
             System.out.println(authresponse);
-            return new SuccessDataResult<>("The staff is saved");
+            return staffdb;
         }
         else
-            return new ErrorDataResult<>("Password must be same");
+            return new Staff();
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.ILanguageRepository;
 import com.mucahitarslan.hrms.entity.concretes.Language;
 import com.mucahitarslan.hrms.service.abstracts.ILanguageService;
@@ -18,12 +16,12 @@ public class LanguageService implements ILanguageService {
     }
 
     @Override
-    public DataResult<Language> add(Language language) {
-        return new SuccessDataResult<>(languageRepository.save(language),"The language is saved successfully");
+    public Language add(Language language) {
+        return languageRepository.save(language);
     }
 
     @Override
-    public DataResult<List<Language>> getAll() {
-        return new SuccessDataResult<>(languageRepository.findAll(),"The languages are listed");
+    public List<Language> getAll() {
+        return languageRepository.findAll();
     }
 }

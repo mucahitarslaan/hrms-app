@@ -1,7 +1,5 @@
 package com.mucahitarslan.hrms.service.concretes;
 
-import com.mucahitarslan.hrms.core.utilities.results.DataResult;
-import com.mucahitarslan.hrms.core.utilities.results.SuccessDataResult;
 import com.mucahitarslan.hrms.dataAccess.abstracts.ILinkRepository;
 import com.mucahitarslan.hrms.entity.concretes.Link;
 import com.mucahitarslan.hrms.service.abstracts.ILinkService;
@@ -18,12 +16,12 @@ public class LinkService implements ILinkService {
     }
 
     @Override
-    public DataResult<Link> add(Link link) {
-        return new SuccessDataResult<>(linkRepository.save(link),"The link is saved successfully");
+    public Link add(Link link) {
+        return linkRepository.save(link);
     }
 
     @Override
-    public DataResult<List<Link>> getAll() {
-        return new SuccessDataResult<>(linkRepository.findAll(),"The links are listed");
+    public List<Link> getAll() {
+        return linkRepository.findAll();
     }
 }
